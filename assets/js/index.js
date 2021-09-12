@@ -1,7 +1,8 @@
+var todaysDate = (moment().format("dddd, MMMM D"));
+
 var currentTime = moment().format("LT");
 
-var todaysDate = (moment().format("dddd, MMMM D"));
-$("#currentDay").text(todaysDate);
+$("#currentDay").text(todaysDate + " ~ " + currentTime);
 
 $(".saveBtn").on("click", function() {
   var time = $(this).siblings(".hour").text();
