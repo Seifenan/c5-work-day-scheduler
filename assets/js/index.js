@@ -1,3 +1,5 @@
+var currentTime = moment().format("LT");
+
 var todaysDate = (moment().format("dddd, MMMM D"));
 $("#currentDay").text(todaysDate);
 
@@ -5,19 +7,18 @@ $(".saveBtn").on("click", function() {
   var time = $(this).siblings(".hour").text();
   var task = $(this).siblings(".description").val();
   localStorage.setItem(time, task);
-
 })
 
 function colorCode() {
-  var currentTime = moment().hour();
+  var hour = moment().hour();
 
   $(".time-block").each(function () {
-    var timeBlock = parseInt($(this).attr("id"));
+    var timeBlock = parseInt($(this).attr("id").split("h")[1]);
 
-    if (timeBlock < currentTime) {
+    if (timeBlock < hour) {
       $(this).addClass("past");
     }
-    else if (timeBlock === currentTime) {
+    else if (timeBlock === hour) {
       $(this).addClass("present");
     }
     else {
